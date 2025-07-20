@@ -59,11 +59,16 @@ http://localhost:3000/viac/daily-wealth?portfolio=1
 ## 🧪 Beispiel-Antwort
 
 ```json
-[
-  { "date": "2022-11-15", "value": 0 },
-  { "date": "2022-11-16", "value": 6883 },
-  { "date": "2022-11-24", "value": 6910.14 }
-]
+{
+  "data": [{
+  "date": "2022-11-24",
+  "realPerformance": 27.14,
+  "investedValue": 25000.00,
+  "todaysValue": 25027.14,
+  "relativePerformance": 1.0011
+},
+...]
+}
 ```
 
 ---

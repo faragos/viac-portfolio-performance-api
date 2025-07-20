@@ -1,4 +1,4 @@
-export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts, cutoffDateStr) {
+export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts) {
   function formatDate(date) {
     return date.toISOString().slice(0, 10);
   }
@@ -36,25 +36,17 @@ export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts,
 
   let summedInvestments = dailyInvestedAmounts.at(-1).value
 
-  if (cutoffDateStr) {
-    const cutoffDate = new Date(cutoffDateStr)
-    summedInvestments = dailyInvestedAmounts
-    .filter(p => new Date(p.date) <= cutoffDate)
-    .at(-1)?.value ?? dailyInvestedAmounts.at(-1).value;
-  }
-
   const result = getAllDates(minDate, maxDate).map(date => {
     const investedValue = getValueAtDate(date, dailyInvestedAmounts);
     const paidValue = getValueAtDate(date, paidAmounts);
     
-    const performanceOnInitalInvestment = dailyInvestedAmounts.at(-1).value + (investedValue - paidValue) 
+    const performanceOnInitalInvestment = summedInvestments + (investedValue - paidValue) 
     return {
       date,
       realPerformance: investedValue - paidValue,
       investedValue: investedValue,
-      todaysValue: dailyInvestedAmounts.at(-1).value + (investedValue - paidValue),
-      cutoffDateValue: summedInvestments + (investedValue - paidValue),
-      relativePerformance: (1 / dailyInvestedAmounts.at(-1).value * performanceOnInitalInvestment),
+      todaysValue: summedInvestments + (investedValue - paidValue),
+      relativePerformance: (1 / summedInvestments * performanceOnInitalInvestment),
     };
   });
 
