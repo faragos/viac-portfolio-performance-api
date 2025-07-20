@@ -2,6 +2,7 @@ import axios from 'axios';
 import { CookieJar } from 'tough-cookie';
 import { wrapper } from 'axios-cookiejar-support';
 import dotenv from 'dotenv';
+import { calculateDailyRealPerformance } from './calculate-performace.js';
 
 dotenv.config();
 
@@ -42,6 +43,10 @@ export async function fetchViacData(portfolioIndex = 0) {
     throw new Error(`Portfolio-Index ${portfolioIndex} existiert nicht.`);
   }
 
-  return selectedPortfolio.dailyWealth;
+  const payments = selectedPortfolio.dailyInvestedAmounts
+
+  const performance = calculateDailyRealPerformance(selectedPortfolio.dailyWealth, payments);
+
+  return performance;
 }
 
