@@ -64,13 +64,12 @@ http://localhost:3000/viac/daily-wealth?portfolio=1
 ```json
 {
   "data": [{
-  "date": "2022-11-24",
-  "realPerformance": 27.14,
-  "investedValue": 25000.00,
-  "todaysValue": 25027.14,
-  "relativePerformance": 1.0011
-},
-...]
+    "date": "2022-11-24",
+    "realPerformance": 27.14,
+    "investedValue": 25000.00,
+    "todaysValue": 25027.14,
+    "relativePerformance": 1.0011},
+  ]
 }
 ```
 
