@@ -50,7 +50,7 @@ Die API läuft dann unter:
 http://localhost:3000/viac/daily-wealth?portfolio=1
 ```
 
-> `portfolio` steht für dein Portfolio (z. B. 0, 1 oder 2 – falls du mehrere hast)
+> `portfolio` steht für dein Portfolio-index (z. B. 0, 1 oder 2 – falls du mehrere hast)
 
 ---
 
