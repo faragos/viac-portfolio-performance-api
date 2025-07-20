@@ -6,7 +6,7 @@ import { calculateDailyRealPerformance } from './calculate-performace.js';
 
 dotenv.config();
 
-export async function fetchViacData(portfolioIndex = 0) {
+export async function fetchViacData(portfolioIndex = 0, cutoffDate) {
   const { VIAC_USERNAME, VIAC_PASSWORD, CSRF_TOKEN } = process.env;
 
   const jar = new CookieJar();
@@ -45,7 +45,7 @@ export async function fetchViacData(portfolioIndex = 0) {
 
   const payments = selectedPortfolio.dailyInvestedAmounts
 
-  const performance = calculateDailyRealPerformance(selectedPortfolio.dailyWealth, payments);
+  const performance = calculateDailyRealPerformance(selectedPortfolio.dailyWealth, payments, cutoffDate);
 
   return performance;
 }

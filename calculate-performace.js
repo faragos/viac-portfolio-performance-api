@@ -1,10 +1,8 @@
-export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts) {
-  // Hilfsfunktion, um Datum als String im Format YYYY-MM-DD zu bekommen
+export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts, cutoffDateStr) {
   function formatDate(date) {
     return date.toISOString().slice(0, 10);
   }
 
-  // Alle Tage zwischen minDate und maxDate generieren
   function getAllDates(minDate, maxDate) {
     const dates = [];
     let current = new Date(minDate);
@@ -16,7 +14,6 @@ export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts)
     return dates;
   }
 
-  // Wert am jeweiligen Tag finden (letzten bekannten Wert übernehmen)
   function getValueAtDate(date, arr) {
     const sorted = arr.slice().sort((a, b) => a.date.localeCompare(b.date));
     let value = 0;
@@ -30,7 +27,6 @@ export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts)
     return value;
   }
 
-  // Ermitteln von min und max Datum aus beiden Arrays
   const allDates = [
     ...dailyInvestedAmounts.map(d => d.date),
     ...paidAmounts.map(p => p.date)
@@ -38,14 +34,27 @@ export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts)
   const minDate = allDates.reduce((a, b) => (a < b ? a : b));
   const maxDate = allDates.reduce((a, b) => (a > b ? a : b));
 
-  // Berechnung der realen Performance pro Tag
+  let summedInvestments = dailyInvestedAmounts.at(-1).value
+
+  if (cutoffDateStr) {
+    const cutoffDate = new Date(cutoffDateStr)
+    summedInvestments = dailyInvestedAmounts
+    .filter(p => new Date(p.date) <= cutoffDate)
+    .at(-1)?.value ?? dailyInvestedAmounts.at(-1).value;
+  }
+
   const result = getAllDates(minDate, maxDate).map(date => {
     const investedValue = getValueAtDate(date, dailyInvestedAmounts);
     const paidValue = getValueAtDate(date, paidAmounts);
+    
+    const performanceOnInitalInvestment = dailyInvestedAmounts.at(-1).value + (investedValue - paidValue) 
     return {
       date,
       realPerformance: investedValue - paidValue,
-      value: dailyInvestedAmounts.at(-1).value + (investedValue - paidValue)
+      investedValue: investedValue,
+      todaysValue: dailyInvestedAmounts.at(-1).value + (investedValue - paidValue),
+      cutoffDateValue: summedInvestments + (investedValue - paidValue),
+      relativePerformance: (1 / dailyInvestedAmounts.at(-1).value * performanceOnInitalInvestment),
     };
   });
 
