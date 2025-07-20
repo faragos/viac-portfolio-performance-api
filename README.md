@@ -4,7 +4,10 @@ Dieses Projekt ermöglicht es, **automatisiert die Portfolioentwicklung eines Vi
 
 > ⚠️ Achtung: Du benötigst deine persönlichen Zugangsdaten (Mobile + Passwort), um dein Portfolio abzufragen.
 > 
-> ⚠️ Achtung: Portolio Performance zwichenspeichert die Kurse. Für den Start der Berechnung wird aber das gesamte investierte Kapital benutzt an Tag x. Daher weicht der Kurs ab je länger man es benutzt. Um es zurückzusetzen müssen die Kurse neu geladen werden.
+> ⚠️ Achtung: Portfolio Performance zwischenspeichert die Kurse. Daher wird empfohlen, mit der `relativePerformance` zu arbeiten. Initial den investierten Betrag von heute als Anteile an je 1 Fr. Nach einer Zeit kann man die Anteile jeweils nachziehen.
+>
+> Beispiel: Wenn der investierte Betrag 5000 CHF ist, dann 5000 Anteile zu 1 Fr kaufen am ersten Tag. Nach 2–3 Jahren hat man z. B. 15000 CHF und würde dann die Buchung auf 15000 Anteile ändern.
+
 
 ---
 
@@ -12,7 +15,7 @@ Dieses Projekt ermöglicht es, **automatisiert die Portfolioentwicklung eines Vi
 
 - Automatisierter Login bei [viac.ch](https://viac.ch)
 - Abruf der täglichen Portfolio-Werte deines 3a-Kontos
-- REST-Endpoint: `/api/portfolio?portfolio=0` → gibt das gewünschte Portfolio zurück
+- REST-Endpoint: `/viac/daily-wealth?portfolio=0` → gibt das gewünschte Portfolio zurück
 - Cookie-Management & CSRF-Unterstützung
 - Bereit zur Selbst-Hostung
 
@@ -106,7 +109,7 @@ Dieses Projekt steht in **keiner Verbindung zu Viac**. Die Nutzung erfolgt auf e
 
 ## ✨ Autor
 
-- 👤 Marco Endres – [endres.ch](https://endres.ch)
+- 👤 Marco Endres – [endres.ch](https://finanzen.endres.ch)
 
 ---
 
