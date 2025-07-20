@@ -44,7 +44,8 @@ export function calculateDailyRealPerformance(dailyInvestedAmounts, paidAmounts)
     const paidValue = getValueAtDate(date, paidAmounts);
     return {
       date,
-      realPerformance: investedValue - paidValue
+      realPerformance: investedValue - paidValue,
+      value: dailyInvestedAmounts.at(-1).value + (investedValue - paidValue)
     };
   });
 
