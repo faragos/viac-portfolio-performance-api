@@ -100,18 +100,6 @@ Dieses Projekt steht in **keiner Verbindung zu Viac**. Die Nutzung erfolgt auf e
 
 ---
 
-## 📄 Lizenz
-
-[MIT](LICENSE)
-
----
-
-## ✨ Autor
-
-- 👤 Marco Endres – [endres.ch](https://finanzen.endres.ch)
-
----
-
 ## 💡 Ideen für die Zukunft
 
 - OAuth 2.0 Unterstützung (falls Viac es je anbietet)
