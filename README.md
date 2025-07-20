@@ -3,6 +3,8 @@
 Dieses Projekt ermöglicht es, **automatisiert die Portfolioentwicklung eines Viac 3a-Kontos** abzufragen und als REST-API bereitzustellen. Ideal für eigene Dashboards, Visualisierungen oder Automatisierungen.
 
 > ⚠️ Achtung: Du benötigst deine persönlichen Zugangsdaten (Mobile + Passwort), um dein Portfolio abzufragen.
+> 
+> ⚠️ Achtung: Portolio Performance zwichenspeichert die Kurse. Für den Start der Berechnung wird aber das gesamte investierte Kapital benutzt an Tag x. Daher weicht der Kurs ab je länger man es benutzt. Um es zurückzusetzen müssen die Kurse neu geladen werden.
 
 ---
 
