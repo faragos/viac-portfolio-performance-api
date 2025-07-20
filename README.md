@@ -10,7 +10,7 @@ Dieses Projekt ermöglicht es, **automatisiert die Portfolioentwicklung eines Vi
 
 - Automatisierter Login bei [viac.ch](https://viac.ch)
 - Abruf der täglichen Portfolio-Werte deines 3a-Kontos
-- REST-Endpoint: `/api/portfolio?index=1` → gibt das gewünschte Portfolio zurück
+- REST-Endpoint: `/api/portfolio?portfolio=0` → gibt das gewünschte Portfolio zurück
 - Cookie-Management & CSRF-Unterstützung
 - Bereit zur Selbst-Hostung
 
@@ -47,10 +47,10 @@ npm run start
 Die API läuft dann unter:
 
 ```
-http://localhost:3000/api/portfolio?index=1
+http://localhost:3000/viac/daily-wealth?portfolio=1
 ```
 
-> `index` steht für dein Portfolio (z. B. 1, 2 oder 3 – falls du mehrere hast)
+> `portfolio` steht für dein Portfolio (z. B. 0, 1 oder 2 – falls du mehrere hast)
 
 ---
 
@@ -106,6 +106,4 @@ Dieses Projekt steht in **keiner Verbindung zu Viac**. Die Nutzung erfolgt auf e
 ## 💡 Ideen für die Zukunft
 
 - OAuth 2.0 Unterstützung (falls Viac es je anbietet)
-- GraphQL-Endpunkt
-- Zeitgesteuerte Automatisierungen (via `cron`)
-- Daten-Export zu Google Sheets, Notion etc.
+
